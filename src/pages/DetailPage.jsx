@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL;
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
@@ -34,9 +35,7 @@ function DetailPage() {
 
         setError(null);
 
-        const response = await fetch(
-          `http://127.0.0.1:5000/api/records/${encodeURIComponent(slug)}`
-        );
+        const response = await fetch(`${API_URL}/api/records/${slug}`);
 
 
         if (response.status === 404) {

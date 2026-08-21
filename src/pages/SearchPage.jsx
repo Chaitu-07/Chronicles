@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL;
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
@@ -52,8 +53,9 @@ function SearchPage() {
         setLoading(true);
         setError(null);
 
-        const url =
-          `http://127.0.0.1:5000/api/records?q=${encodeURIComponent(query)}`;
+        const url = query
+          ? `${API_URL}/api/records?q=${encodeURIComponent(query)}`
+          : `${API_URL}/api/records`;
 
         const response = await fetch(url);
 

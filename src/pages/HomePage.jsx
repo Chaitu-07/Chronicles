@@ -5,7 +5,7 @@ import EraCard from "../components/EraCard";
 import EventCard from "../components/EventCard";
 import Timeline from "../components/Timeline";
 
-
+const API_URL = import.meta.env.VITE_API_URL;
 /* =========================================================
    HISTORICAL ERAS
 ========================================================= */
@@ -276,8 +276,10 @@ function HomePage() {
         setLoadingEvents(true);
         setEventError(null);
 
+        const API_URL = import.meta.env.VITE_API_URL;
+
         const response = await fetch(
-          "http://127.0.0.1:5000/api/records"
+            `${API_URL}/api/records`
         );
 
         if (!response.ok) {
