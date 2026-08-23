@@ -11,6 +11,21 @@ api = Blueprint(
     url_prefix="/api"
 )
 
+# =========================================
+# API HOME
+# =========================================
+
+@api.get("/")
+def api_home():
+
+    return jsonify({
+        "status": "success",
+        "message": "Chronicles API is running",
+        "endpoints": {
+            "health": "/api/health",
+            "records": "/api/records"
+        }
+    })
 
 # =========================================
 # HEALTH CHECK
